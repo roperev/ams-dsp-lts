@@ -1,0 +1,138 @@
+.card-columns {
+  font-size: var(--body-font-size-s);
+}
+
+.card-columns h3 {
+  font-size: var(--heading-font-size-m);
+  line-height: 2.0625rem;
+}
+
+.card-columns a:any-link {
+  color: var(--text-color);
+}
+
+.card-columns > ul > li > .cards-card-image {
+    line-height: 0;
+  }
+  
+  .card-columns > ul > li > .cards-card-image img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    display: block;
+    margin-bottom: 18px;
+  }
+  
+  .card-columns > ul {
+    padding-inline-start: 0;
+  }
+  
+  .card-columns > ul > li {
+    display: flex;
+    flex: 1 1 0;
+    flex-direction: column;
+    border-radius: 10px;
+    background: var(--clr-white);
+    padding: 25px 31px 30px;
+    min-height: 296px;
+    box-sizing: border-box;
+    box-shadow: 15px 15px 15px rgb(0 0 0 / 12%);
+    margin-bottom: 18px;
+  }
+  
+  .card-columns .gradient-primary {
+    background: var(--color-gradient-primary);
+
+    h3, h4 {
+        color: var(--color-brand-secondary);
+    }
+
+   p, a, li, ol {
+        color: var(--clr-white);
+    }
+  }
+
+  .card-columns .gradient-primary ul, 
+  .card-columns .gradient-secondary ul {
+    list-style-type: none;
+    padding-left: 32px;
+    text-indent: -16px;
+}
+
+.card-columns .gradient-primary li,
+.card-columns .gradient-secondary li {
+    margin-bottom: 14px;
+    letter-spacing:-0.5px;
+    font-weight: 600;
+}
+
+.card-columns .gradient-primary li::before {
+    content: var(--bullet-icon-secondary);
+    display: inline-block;
+    vertical-align: middle;
+    width: 12px;
+    margin-right: 4px;
+    height: 20px;
+  }
+  
+  .card-columns .gradient-secondary li::before {
+    content: var(--bullet-icon-primary);
+    display: inline-block;
+    vertical-align: middle;
+    width: 12px;
+    margin-right: 4px;
+    height: 20px;
+  }
+
+  .card-columns .gradient-secondary {
+    background: var(--color-gradient-secondary);
+
+    h3, h4 {
+        color: var(--color-brand-primary);
+    }
+  }
+  
+  .card-columns span.icon {
+    height: 56px;
+    width: auto;
+    object-fit: contain;
+  }
+  
+  @media (width >= 600px) {
+    .card-columns > div {
+      align-items: center;
+      flex-direction: unset;
+    }
+  
+    .card-columns > ul > li {
+      margin-bottom: 0;
+      flex: 1;
+      order: unset;
+    }
+  
+    .card-columns.cc-4-cols > ul > li {
+      padding: 25px 31px 30px;
+      width: 22%;
+    }
+  
+    .card-columns > ul {
+      flex-direction: row;
+      display: flex;
+      gap: 18px;
+    }
+  }
+
+  @media (width >= 1200px) {
+    .card-columns {
+      font-size: 18px;
+
+    }
+
+    .card-columns h3 {
+      font-size: 2rem;
+    }
+
+    .card-columns > ul > li {
+      padding: 76px 40px 76px 70px;
+    }
+  }

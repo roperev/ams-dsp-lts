@@ -1,1 +1,8 @@
 /* stylelint-disable no-empty-source */
+main .section div.fragment-wrapper {
+    width: 100%;
+    margin: 0 auto;
+    max-width: 1458px;
+    position: relative;
+}
+

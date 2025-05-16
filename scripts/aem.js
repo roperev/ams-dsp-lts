@@ -16,12 +16,12 @@ function sampleRUM(checkpoint, data) {
   const timeShift = () => (window.performance ? window.performance.now() : Date.now() - window.hlx.rum.firstReadTime);
   try {
     window.hlx = window.hlx || {};
+    sampleRUM.enhance = () => {};
     if (!window.hlx.rum) {
-      sampleRUM.enhance = () => {};
       const param = new URLSearchParams(window.location.search).get('rum');
-      const weight = (param === 'on' && 1)
-        || (window.SAMPLE_PAGEVIEWS_AT_RATE === 'high' && 10)
+      const weight = (window.SAMPLE_PAGEVIEWS_AT_RATE === 'high' && 10)
         || (window.SAMPLE_PAGEVIEWS_AT_RATE === 'low' && 1000)
+        || (param === 'on' && 1)
         || 100;
       const id = Math.random().toString(36).slice(-4);
       const isSelected = param !== 'off' && Math.random() * weight < 1;
@@ -242,7 +242,10 @@ async function loadCSS(href) {
       link.href = href;
       link.onload = resolve;
       link.onerror = reject;
-      document.head.append(link);
+      // document.head.append(link);
+      const overrides = document.getElementById('style-overrides');
+      if (overrides) overrides.before(link);
+      else document.head.append(link);
     } else {
       resolve();
     }
@@ -406,6 +409,7 @@ function wrapTextNodes(block) {
  * Decorates paragraphs containing a single link as buttons.
  * @param {Element} element container element
  */
+/* Commenting out to prefer the button component in Universal Editor
 function decorateButtons(element) {
   element.querySelectorAll('a').forEach((a) => {
     a.title = a.title || a.textContent;
@@ -439,6 +443,7 @@ function decorateButtons(element) {
     }
   });
 }
+*/
 
 /**
  * Add <img> for icon, prefixed with codeBasePath and optional prefix.
@@ -512,6 +517,43 @@ function decorateSections(main) {
       sectionMeta.parentNode.remove();
     }
   });
+}
+
+/**
+ * Gets placeholders object.
+ * @param {string} [prefix] Location of placeholders
+ * @returns {object} Window placeholders object
+ */
+// eslint-disable-next-line import/prefer-default-export
+async function fetchPlaceholders(prefix = 'default') {
+  window.placeholders = window.placeholders || {};
+  if (!window.placeholders[prefix]) {
+    window.placeholders[prefix] = new Promise((resolve) => {
+      fetch(`${prefix === 'default' ? '' : prefix}/placeholders.json`)
+        .then((resp) => {
+          if (resp.ok) {
+            return resp.json();
+          }
+          return {};
+        })
+        .then((json) => {
+          const placeholders = {};
+          json.data
+            .filter((placeholder) => placeholder.Key)
+            .forEach((placeholder) => {
+              placeholders[toCamelCase(placeholder.Key)] = placeholder.Text;
+            });
+          window.placeholders[prefix] = placeholders;
+          resolve(window.placeholders[prefix]);
+        })
+        .catch(() => {
+          // error loading placeholders
+          window.placeholders[prefix] = {};
+          resolve(window.placeholders[prefix]);
+        });
+    });
+  }
+  return window.placeholders[`${prefix}`];
 }
 
 /**
@@ -598,7 +640,7 @@ function decorateBlock(block) {
     const section = block.closest('.section');
     if (section) section.classList.add(`${shortBlockName}-container`);
     // eslint-disable-next-line no-use-before-define
-    decorateButtons(block);
+    // decorateButtons(block);
   }
 }
 
@@ -694,10 +736,11 @@ export {
   createOptimizedPicture,
   decorateBlock,
   decorateBlocks,
-  decorateButtons,
+  // decorateButtons,
   decorateIcons,
   decorateSections,
   decorateTemplateAndTheme,
+  fetchPlaceholders,
   getMetadata,
   loadBlock,
   loadCSS,

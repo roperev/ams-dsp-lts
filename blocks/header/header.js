@@ -1,8 +1,9 @@
-import { getMetadata } from '../../scripts/aem.js';
+import { fetchPlaceholders, getMetadata } from '../../scripts/aem.js';
+import { createModal } from '../../scripts/scripts.js';
 import { loadFragment } from '../fragment/fragment.js';
 
 // media query match that indicates mobile/tablet width
-const isDesktop = window.matchMedia('(min-width: 900px)');
+const isDesktop = window.matchMedia('(min-width: 1200px)');
 
 function closeOnEscape(e) {
   if (e.code === 'Escape') {
@@ -103,6 +104,23 @@ function toggleMenu(nav, navSections, forceExpanded = null) {
   }
 }
 
+function closeNav() {
+  const nav = document.getElementById('nav');
+  const navSections = nav.querySelector('.nav-sections');
+  const navSectionExpanded = navSections.querySelector(
+    '[aria-expanded="true"]',
+  );
+  if (navSectionExpanded && isDesktop.matches) {
+    // eslint-disable-next-line no-use-before-define
+    toggleAllNavSections(navSections);
+    navSectionExpanded.focus();
+  } else if (!isDesktop.matches) {
+    // eslint-disable-next-line no-use-before-define
+    toggleMenu(nav, navSections);
+    nav.querySelector('button').focus();
+  }
+}
+
 /**
  * loads and decorates the header, mainly the nav
  * @param {Element} block The header block element
@@ -163,4 +181,42 @@ export default async function decorate(block) {
   navWrapper.className = 'nav-wrapper';
   navWrapper.append(nav);
   block.append(navWrapper);
+
+  const overlay = document.createElement('div');
+  overlay.className = 'background-dimmer';
+  document.body.appendChild(overlay);
+  document.querySelectorAll('nav a').forEach(async (link) => {
+    if (
+      link !== undefined
+      && link.textContent === 'HCP Site'
+    ) {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        closeNav();
+        fetchPlaceholders().then((placeholders) => {
+          const title = placeholders.exitmodaltitle;
+          const message = placeholders.exitmodaltext;
+          const yesButton = {
+            name: placeholders.exitmodalcontinue,
+            class: 'button-continue',
+            action: () => {
+              window.location.href = link.href;
+              document.querySelector('.background-dimmer')?.classList.remove('show');
+            },
+          };
+          const noButton = {
+            name: placeholders.exitmodalcancel,
+            class: 'button-cancel',
+            action: () => {
+              document.querySelector('.modal-container').remove();
+              document.querySelector('.background-dimmer')?.classList.remove('show');
+            },
+          };
+          const legalNumber = placeholders.projectnumber;
+          document.querySelector('.background-dimmer')?.classList.add('show');
+          createModal(document, title, message, [yesButton, noButton], legalNumber);
+        });
+      });
+    }
+  });
 }
