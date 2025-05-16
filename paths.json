@@ -1,10 +1,14 @@
 {
   "mappings": [
-    "/content/aem-boilerplate/:/",
-    "/content/aem-boilerplate/configuration:/.helix/config.json",
-    "/content/aem-boilerplate/metadata:/metadata.json"
+    "/content/xwalk-durystasavingsprog/:/",
+    "/content/xwalk-durystasavingsprog/configuration:/.helix/config.json",
+    "/content/xwalk-durystasavingsprog/metadata:/metadata.json",
+    "/content/xwalk-durystasavingsprog/placeholders:/placeholders.json",
+    "/content/xwalk-durystasavingsprog/redirects:/redirects.json",
+    "/content/xwalk-durystasavingsprog/designs/design1:/design1.json",
+    "/content/xwalk-durystasavingsprog/designs/design2:/design2.json"
   ],
   "includes": [
-    "/content/aem-boilerplate/"
+    "/content/xwalk-durystasavingsprog/"
   ]
 }

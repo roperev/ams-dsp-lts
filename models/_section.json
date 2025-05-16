@@ -35,6 +35,12 @@
               "value": "highlight"
             }
           ]
+        },
+        {
+          "component": "text",
+          "name": "id",
+          "label": "ID",
+          "description": "Adds an ID to the section"
         }
       ]
     }
@@ -50,7 +56,9 @@
         "hero",
         "cards",
         "columns",
-        "fragment"
+        "fragment",
+        "card-columns",
+        "isi"
       ]
     }
   ]

@@ -15,7 +15,15 @@
       "hero",
       "cards",
       "columns",
-      "fragment"
+      "fragment",
+      "card-columns",
+      "isi"
+    ]
+  },
+  {
+    "id": "card-columns",
+    "components": [
+      "card-column"
     ]
   },
   {
@@ -38,5 +46,9 @@
       "button",
       "title"
     ]
+  },
+  {
+    "id": "page-metadata",
+    "components": []
   }
 ]

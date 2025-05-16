@@ -1,37 +1,135 @@
 .hero-container .hero-wrapper {
   max-width: unset;
   padding: 0;
-}
-
-.hero {
-  position: relative;
-  padding: 40px 24px;
-  min-height: 300px;
-}
-
-.hero h1 {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  color: var(--background-color);
-}
-
-.hero picture {
-  position: absolute;
-  z-index: -1;
-  inset: 0;
-  object-fit: cover;
-  box-sizing: border-box;
-}
-
-.hero img {
-  object-fit: cover;
   width: 100%;
   height: 100%;
 }
 
-@media (width >= 900px) {
-  .hero {
-    padding: 40px 32px;
+.hero.block {
+  min-height: 400px;
+  width: 100%;
+  position: relative;
+  min-width: 0;
+  word-wrap: break-word
+}
+
+.hero.block>div:nth-of-type(2)>div>h2>span {
+  color: var(--clr-white);
+}
+
+.hero.block>div:nth-of-type(2)>div>h2 {
+  margin-bottom: 0;
+}
+
+.hero.block img {
+  width: 100%;
+}
+
+@media (width >= 376px) {
+  .hero.block {
+    min-height: 320px;
+  }
+}
+
+@media (601px <= width <= 1024px) {
+  .hero.block {
+    min-height: unset
+  }
+
+  .hero.block>div:first-child>div {
+    min-height: unset !important;
+  }
+
+  .hero.block>div:first-child>div picture {
+    display: flex
+  }
+
+  .hero.block>div:nth-of-type(2)>div {
+    min-height: unset;
+    width: 500px;
+    margin: 0;
+    height: unset;
+    padding: 12px 20px !important;
+  }
+}
+
+.hero.block>div:nth-of-type(2) {
+  position: absolute;
+  display: flex;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  font-size: .9rem;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+.hero.block>div:nth-of-type(2)>div {
+  padding: 38px 24px 42px 27px;
+  height: 100%;
+  background: var(--color-gradient-primary);
+}
+
+@media (width >= 601px) {
+  .hero.block>div:nth-of-type(2)>div {
+    width: 500px;
+    margin: 0;
+    height: 100%
+  }
+}
+
+@media (width >= 985px) {
+  .hero.block>div:nth-of-type(2)>div {
+    padding: 40px !important;
+  }
+}
+
+@media (width >= 1200px) {
+  .hero.block>div:nth-of-type(2) {
+    width: 612px !important;
+    left: 10%;
+  }
+
+  .hero.block>div:nth-of-type(2)>div {
+    padding: 100px 60px 0 !important;
+  }
+}
+
+@media (601px <= width <= 827px) {
+  .hero.block {
+    min-height: 218px;
+    display: block
+  }
+
+  .hero.block>div:first-child>div picture {
+    display: none
+  }
+
+  .hero.block>div:nth-of-type(2)>div {
+    width: 100%;
+    padding: 12px 20px;
+  }
+}
+
+@media (827px <= width <= 984px) {
+  .hero.block {
+    display: flex;
+    top: -8px
+  }
+}
+
+.hero.block>div:first-child>div {
+  background: 0;
+}
+
+@media (width<= 600px) {
+  .hero.block>div:nth-of-type(2)>div {
+    margin: 0;
+  }
+}
+
+@media (1200px <= width < 1400px) {
+  .hero.block>div:nth-of-type(2)>div {
+    padding: 8% 60px;
   }
 }
