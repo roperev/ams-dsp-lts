@@ -1,5 +1,5 @@
 mountpoints:
   /:
-    url: "https://author1uswest2-28220597.dev.weretail-global.adobecqms.net/bin/franklin.delivery/helms-charity/ams-dsp/sp23"
+    url: "https://author1uswest2-28220597.dev.weretail-global.adobecqms.net/bin/franklin.delivery/helms-charity/ams-dsp/main"
     type: "markup"
     suffix: ".html"
