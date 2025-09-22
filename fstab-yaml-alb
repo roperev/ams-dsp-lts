@@ -1,5 +1,0 @@
-mountpoints:
-  /:
-    url: "https://author-weretail-global-dev.adobecqms.net/bin/franklin.delivery/helms-charity/ams-dsp/main"
-    type: "markup"
-    suffix: ".html"
