@@ -21,6 +21,16 @@
           "name": "keywords",
           "multi": true,
           "label": "Keywords"
+        },
+        {
+          "component": "aem-content",
+          "name": "reference",
+          "value": "",
+          "label": "AEM Content Picker - test",
+          "valueType": "string",
+          "validation": {
+          "rootPath": "/content/dam"
+          }
         }
       ]
     }
