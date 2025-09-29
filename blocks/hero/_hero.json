@@ -45,7 +45,7 @@
           "component": "aem-content",
           "name": "reference",
           "value": "",
-          "label": "AEM Content Picker - test",
+          "label": "AEM Content Picker - test value",
           "valueType": "string",
           "validation": {
           "rootPath": "/content/dam"
