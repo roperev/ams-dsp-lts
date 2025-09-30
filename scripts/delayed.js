@@ -10,7 +10,8 @@ const oneTrustId = 'fab99249-4680-4892-8016-c1821d0ca04a';
 // testing if we can call the script from adobe without affecting the page load performance
 if (window.location.host.startsWith('localhost')) {
   await loadScript(launchDev);
-} else if (window.location.host.startsWith('www.durystasavingsprogram.com') || window.location.host.endsWith('.live')) {
+} else if (window.location.host.startsWith('www.durystasavingsprogram.com') 
+ || window.location.host.endsWith('.live')) {
   await loadScript(launchProd);
 } else if (window.location.host.endsWith('.page')) {
   await loadScript(launchDev);
