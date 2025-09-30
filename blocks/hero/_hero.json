@@ -46,10 +46,7 @@
           "name": "reference",
           "value": "",
           "label": "AEM Content Picker - test value",
-          "valueType": "string",
-          "validation": {
-          "rootPath": "/content/dam"
-          }
+          "valueType": "string"
         }
       ]
     }
