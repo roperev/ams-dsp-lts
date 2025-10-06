@@ -2,9 +2,9 @@
 Your project's description...
 
 ## Environments
-- Preview: https://main--xwalkdurystasavingsprog--abbvie.aem.page/
-- Live: https://main--xwalkdurystasavingsprog--abbvie.aem.live/
-- AEMaaCS temporary: https://author-p130360-e1585120.adobeaemcloud.com/ui#/aem/sites.html/content/xwalkdurystasavingsprog
+- Preview: https://main--ams-dsp-lts--roperev.aem.page/
+- Live: https://main--ams-dsp-lts--roperev.aem.live/
+- AEM LTS Author: https://52.73.168.93/sites.html/content/xwalk-durystasavingsprog
 
 test
 ## Documentation
