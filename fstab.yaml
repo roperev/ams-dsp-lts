@@ -1,5 +1,5 @@
 mountpoints:
   /:
-    url: "https://52.73.168.93/bin/franklin.delivery/roperev/ams-dsp-lts/main"
+    url: "https://author-weretail-training-sandbox.adobecqms.net/bin/franklin.delivery/roperev/ams-dsp-lts/main"
     type: "markup"
     suffix: ".html"
